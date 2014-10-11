@@ -1,7 +1,7 @@
 $(function(){
 	
 	
-
+alert('inicio');
   var currencies = [    
     { value: ' ', data: '' },
   ];
