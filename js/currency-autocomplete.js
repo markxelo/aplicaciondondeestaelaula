@@ -8,7 +8,7 @@ $(function(){
 
   var puntos;
   
-  $.getJSON("http://localhost/dondeestaelaulayii/index.php/api/posts", function(data) {  
+  $.getJSON("192.168.0.10/dondeestaelaulayii/index.php/api/posts", function(data) {  
 	   $.each(data, function(index, objetoDelListado)
 	   {	
 			alert(objetoDelListado.nombre);
