@@ -8,7 +8,7 @@ alert('inicio');
 
   var puntos;
   
-  $.getJSON("192.168.0.10/dondeestaelaulayii/index.php/api/posts", function(data) {  
+  $.getJSON("http://dondeestaelaula.esy.es/index.php/api/posts", function(data) {  
 	   $.each(data, function(index, objetoDelListado)
 	   {	
 			alert(objetoDelListado.nombre);
