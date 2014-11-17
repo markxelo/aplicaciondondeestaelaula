@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    
+    <title>Donde esta el aula</title>
+
+   
+
+        <link rel='stylesheet' href='js/jQueryMobile/jquery.mobile-1.4.5.min.css' />
+
+        <script src='js/jquery-2.1.1.js'></script>
+
+        <script src='js/jQueryMobile/jquery.mobile-1.4.5.min.js'></script>
+
+		
+	<link rel="stylesheet" href="styles/styles.css" type="text/css">
+	<link rel="stylesheet" type="text/css" media="all" href="styles/style-autocomplete.css">
+	<script src="jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.autocomplete.min.js"></script>
+	<script type="text/javascript" src="js/currency-autocomplete.js"></script>
+	
+	
+	
+
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$.getJSON("http://dondeestaelaula.esy.es/index.php/api/posts", function(data) {  
+		   
+		  
+		   $.each(data, function(index, objetoDelListado)
+		   {
+		   			var opcion = new Option(objetoDelListado.nombre, objetoDelListado.id); 
+		   			
+		   			document.form1.lista2.add(opcion);
+		   			document.form1.lista.add(opcion);
+		   	});
+		});
+	});
+	
+	</script>
+
+
+
+
+
+
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-wy3gEj28ulO-x2JJmk6EGybl8fPRAl0&sensor=TRUE"></script>
+        
+        <script>
+
+
+			
+			function iniciar() {
+				var mapOptions = {
+					zoom: 17,
+					};
+				var map = new google.maps.Map(document.getElementById('map_canvas'),mapOptions);
+				/* inicio kml */
+				var ctaLayer = new google.maps.KmlLayer({
+					url: 'https://maps.google.com.ar/maps/ms?msid=207415282598937372097.0004dd56bdd970597a5b8&msa=0&ll=-38.941056751547386,-68.05727183818817&spn=0.006943,0.012403&output=kml'
+					});
+				ctaLayer.setMap(map);
+				/* fin kml */
+				/* inicio marcador , trae todos los puntos de aulas */
+				/* fin marcador */
+			}
+			function pincheaula() {
+				var myLatlng = new google.maps.LatLng(-38.941056751547386,-68.05727183818817);
+				var marker = new google.maps.Marker({
+					position: myLatlng,
+					map: map,
+					draggable:false,
+					animation: google.maps.Animation.DROP,
+					title:"Aula 43"
+				});
+			}
+			google.maps.event.addDomListener(window, 'load', iniciar);
+		
+		</script>
+
+    </head>
+
+<body>
+
+    <div data-role='page' id= 'inicio' data-theme="a" >
+
+        <div data-role='header' data-theme="b">
+
+            <h1> Buscador de aula </h1>
+
+        </div>
+
+       
+
+		<div data-role="content">
+			<h3>Mapa UNCOMA</h3>
+			<div id="search" >
+				<form >
+					<fieldset>
+					<legend>Buscar Aula</legend>
+					<input type="text" name="currency" class="biginput" id="autocomplete" onfocus="this.value='';" >
+					<input type="submit" name="go" id="go" value="Buscar" data-theme="b">
+					</fieldset>
+				</form>
+			</div>
+       
+			<div id="map_canvas" style="width: 400px; height: 400px;"></div>
+		</div>
+		<!-- /content -->
+		<div data-role="footer">Pie de pagina</div>
+		</div>
+
+    </div>
+    
+
+  
+
+</body>
+
+</html>
