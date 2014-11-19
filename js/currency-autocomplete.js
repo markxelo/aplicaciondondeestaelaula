@@ -11,7 +11,7 @@ $(function(){
   $.getJSON("http://localhost/dondeestaelaulayii/index.php/api/posts", function(data) {  
 	   $.each(data, function(index, objetoDelListado)
 	   {	
-			//alert(objetoDelListado.nombre);
+			alert(objetoDelListado.nombre+'desde autocomplete');
 			
 			puntos={ value: objetoDelListado.nombre, data: objetoDelListado.id };
 			currencies[currencies.length] = puntos;
